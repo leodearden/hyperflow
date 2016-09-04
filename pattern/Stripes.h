@@ -9,17 +9,18 @@
 #define STRIPES_H_
 
 #include "Pattern.h"
+#include "Value.h"
 #include <cstdint>
 
 class Stripes: public Pattern {
 public:
-	Stripes();
+	Stripes(Value& width);
 	virtual void updateFrame(CHSV* frame);
 
 private:
 	uint_fast32_t frame_count;
 
-	static const int stripe_y = 8;
+	Value& width;
 };
 
 #endif /* STRIPES_H_ */
