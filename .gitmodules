@@ -7,3 +7,6 @@
 [submodule "pattern/Catch"]
 	path = pattern/Catch
 	url = https://github.com/philsquared/Catch.git
+[submodule "fabricate"]
+	path = fabricate
+	url = https://github.com/SimonAlfie/fabricate.git

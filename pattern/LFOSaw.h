@@ -14,7 +14,7 @@ template <typename W, typename A> class LFOSaw: public Value {
 public:
 	LFOSaw(W& wavelength_, A& peakToPeak_, Value& minimum_) :
 		frame_count(0),
-		value(0),
+		value(minimum_.get()),
 		wavelength(wavelength_),
 		peakToPeak(peakToPeak_),
 		minimum(minimum_) {}
