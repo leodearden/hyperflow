@@ -3,7 +3,7 @@
 	url = https://github.com/dtschump/CImg.git
 [submodule "FastLED"]
 	path = FastLED
-	url = https://github.com/FastLED/FastLED.git
+	url = git@github.com:leodearden/FastLED.git
 [submodule "pattern/Catch"]
 	path = pattern/Catch
 	url = https://github.com/philsquared/Catch.git
