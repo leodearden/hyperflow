@@ -13,11 +13,11 @@ setup(dirs=[base_dir, script_relative('../FastLED')])
 
 classes = [re.sub(r'\.cpp', '', name) for name in glob.glob(script_relative('*.cpp'))] + [script_relative('../FastLED/hsv2rgb')]
 test_sources = [re.sub(r'\.cpp', '', name) for name in glob.glob(script_relative('test/*.cpp'))]
-cflags = '-DPLATFORM_DUMMY=1 -I/opt/X11/include -O0 -g3 -Wall -Wno-c++11-extensions'.split() + [
+cflags = '-DPLATFORM_DUMMY=1 -I/opt/X11/include -O0 -g3 -Wall -Wno-c++11-extensions -v'.split() + [
         '-I' + script_relative(inc)
         for inc in ['.', '../FastLED', '../CImg', '../pattern/Catch/single_include']
     ]
-ldflags = '-L/opt/X11/lib -lX11'.split()
+ldflags = '-L/opt/X11/lib -lX11 -v'.split()
 build_dir = script_relative('build')
 
 def preview():

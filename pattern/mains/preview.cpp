@@ -1,3 +1,4 @@
+#include "FEM.h"
 #include "Stripes.h"
 #include "FixedValue.h"
 #include "LFOSaw.h"
@@ -11,11 +12,12 @@ static const int pix_per_led = 1;
 static const int slices = 1000;
 
 int main() {
-	FixedValue<100> wavelength;
-	FixedValue<10> amplitude;
-	FixedValue<1> minimum;
-	LFOSaw<Value, Value> width(wavelength, amplitude, minimum);
-	Stripes gen(width);
+//	FixedValue<100> wavelength;
+//	FixedValue<10> amplitude;
+//	FixedValue<1> minimum;
+//	LFOSaw<Value, Value> width(wavelength, amplitude, minimum);
+//	Stripes gen(width);
+	FEM gen;
 	CHSV frame_hsv[Pattern::num_leds];
 	CRGB frame_rgb[Pattern::num_leds];
 	CImg<unsigned char> img(slices, Pattern::num_leds * pix_per_led, 1, 3, 0);
