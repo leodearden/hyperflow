@@ -8,7 +8,7 @@
 #include "Stripes.h"
 
 void Stripes::updateFrame(CHSV* frame) {
-	CHSV value(0xff, 0x0, ((frame_count / width.get()) % 2) ? 0xff : 0);
+	CHSV value(0xff, 0x0, ((frame_count / width.next()) % 2) ? 0xff : 0);
 	for(int i = 0; i < Pattern::num_leds; ++i) {
 		frame[i] = value;
 	}

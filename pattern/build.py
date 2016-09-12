@@ -12,7 +12,8 @@ def script_relative(path):
 setup(dirs=[base_dir, script_relative('../FastLED')])
 
 classes = [re.sub(r'\.cpp', '', name) for name in glob.glob(script_relative('*.cpp'))] + [script_relative('../FastLED/hsv2rgb')]
-cflags = '-DPLATFORM_DUMMY=1 -I/opt/X11/include -O0 -g3 -Wall'.split() + [
+test_sources = [re.sub(r'\.cpp', '', name) for name in glob.glob(script_relative('test/*.cpp'))]
+cflags = '-DPLATFORM_DUMMY=1 -I/opt/X11/include -O0 -g3 -Wall -Wno-c++11-extensions'.split() + [
         '-I' + script_relative(inc)
         for inc in ['.', '../FastLED', '../CImg', '../pattern/Catch/single_include']
     ]
@@ -23,14 +24,14 @@ def preview():
     build_and_run('mains/preview', 'preview')
 
 def test():
-    build_and_run('mains/test', 'test')
+    build_and_run('mains/test', 'test', extra_sources=test_sources)
 
-def build_and_run(main, name):
-    build(main, name)
+def build_and_run(main, name, extra_sources=[]):
+    build(main, name, extra_sources)
     shell(oname(build_dir, name), silent=False)
 
-def build(main, name):
-    sources = classes + [script_relative(main)]
+def build(main, name, extra_sources=[]):
+    sources = classes + [script_relative(main)] + extra_sources
     objects = compile(sources)
     link(name, objects)
 

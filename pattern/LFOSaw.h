@@ -20,6 +20,7 @@ public:
 		minimum(minimum_) {}
 	virtual int_fast32_t get() { return value; }
 	virtual int_fast32_t next() {
+		++frame_count;
 		auto w = wavelength.next();
 		value = (peakToPeak.next() * ( frame_count % w )) / w  + minimum.next();
 		return value;

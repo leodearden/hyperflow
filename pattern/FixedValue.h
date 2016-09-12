@@ -8,6 +8,8 @@
 #ifndef FIXEDVALUE_H_
 #define FIXEDVALUE_H_
 
+#include "Value.h"
+
 template <int_fast32_t v> class FixedValue: public Value {
 public:
 	virtual int_fast32_t get() { return v; }
