@@ -12,6 +12,6 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 	for (int i = 0; i < Pattern::num_leds; ++i) {
 		frame[i] = CHSV(((frame_count + i) % h_period) * 255 / h_period,
 				255,
-				((frame_count + i) % v_period) * 255 / v_period);
+				((frame_count + Pattern::num_leds - i) % v_period) * 255 / v_period);
 	}
 }
