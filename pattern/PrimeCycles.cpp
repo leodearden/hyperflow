@@ -17,8 +17,12 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 	++frame_count;
 	for (int i = 0; i < Pattern::num_leds; ++i) {
 		frame[i] = CHSV(
-				128 + 127 * ( ::sinusoid<131>(frame_count + i)
-				            + ::sinusoid<137>(frame_count + i)) /2,
+				255 * ( ( ::sinusoid<131>(frame_count + i)
+			            + ::sinusoid<137>(frame_count + i)) /2
+				      * ( ::sinusoid<151>(frame_count + Pattern::num_leds - i)
+					    + ::sinusoid<157>(frame_count + Pattern::num_leds - i)) /2
+					  + ::sinusoid<4729>(frame_count))
+					,
 				255,
 				255);
 //				((frame_count + Pattern::num_leds - i) % v_period) * 255 / v_period);
