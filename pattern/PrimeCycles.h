@@ -16,9 +16,11 @@ public:
 	virtual void updateFrame(CHSV* frame);
 private:
 	uint_fast32_t frame_count;
-	static constexpr int h_period = 13;
+	static constexpr int h_period = 347;
 	static constexpr int s_period = 17;
 	static constexpr int v_period = 29;
+
+	double sinusoid(int i);
 };
 
 #endif /* PRIMECYCLES_H_ */
