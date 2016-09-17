@@ -31,7 +31,7 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 					    + ::sinusoid<449>(frame_count + Pattern::num_leds - i)) / 2
 						+ base_colour),
 				saturation,
-				255 - 255 * value_sin * value_sin
+				255 * fabs (value_sin)
 				);
 	}
 }
