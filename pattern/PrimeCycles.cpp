@@ -19,13 +19,15 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 		frame[i] = CHSV(
 				255 * ( ( ::sinusoid<131>(frame_count + i)
 			            + ::sinusoid<137>(frame_count + i)) /2
-				      * ( ::sinusoid<151>(frame_count + Pattern::num_leds - i)
-					    + ::sinusoid<157>(frame_count + Pattern::num_leds - i)) /2
-					  + ::sinusoid<4729>(frame_count))
-					,
+				      * ( ::sinusoid<443>(frame_count + Pattern::num_leds - i)
+					    + ::sinusoid<449>(frame_count + Pattern::num_leds - i)) / 2
+					  + ::sinusoid<20071>(frame_count)),
 				255,
-				255);
-//				((frame_count + Pattern::num_leds - i) % v_period) * 255 / v_period);
+				128 + 127 * ( ( ::sinusoid<971>(frame_count + i)
+						      + ::sinusoid<1009>(frame_count + i)) /2
+				      * ( ::sinusoid<67>(frame_count + Pattern::num_leds - i)
+					    + ::sinusoid<71>(frame_count + Pattern::num_leds - i)) / 2 )
+				);
 	}
 }
 
