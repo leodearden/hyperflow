@@ -16,7 +16,7 @@ double sinusoid(int i) {
 void PrimeCycles::updateFrame(CHSV* frame) {
 	++frame_count;
 	double saturation_sin = ::sinusoid<2791>(frame_count);
-	double saturation = 255 - 255 * saturation_sin * saturation_sin;
+	double saturation = 255 - 210 * saturation_sin * saturation_sin;
 	double base_colour = ::sinusoid<20071>(frame_count);
 	for (int i = 0; i < Pattern::num_leds; ++i) {
 		frame[i] = CHSV(
@@ -26,10 +26,10 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 					    + ::sinusoid<449>(frame_count + Pattern::num_leds - i)) / 2
 						+ base_colour),
 				saturation,
-				128 + 127 * ( ( ::sinusoid<971>(frame_count + i)
-						      + ::sinusoid<1009>(frame_count + i)) /2
-				      * ( ::sinusoid<67>(frame_count + Pattern::num_leds - i)
-					    + ::sinusoid<71>(frame_count + Pattern::num_leds - i)) / 2 )
+				128 + 127 * ( ( ::sinusoid<587>(frame_count + i)
+						      + ::sinusoid<593>(frame_count + i)) /2
+				      * ( ::sinusoid<109>(frame_count + Pattern::num_leds - i)
+					    + ::sinusoid<113>(frame_count + Pattern::num_leds - i)) / 2 )
 				);
 	}
 }
