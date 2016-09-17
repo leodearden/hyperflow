@@ -10,7 +10,7 @@
 using namespace cimg_library;
 
 static const int pix_per_led = 1;
-static const int slices = 9000;
+static const int slices = 3000;
 
 int main() {
 //	FixedValue<100> wavelength;
