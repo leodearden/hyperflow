@@ -22,7 +22,7 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 				      * ( ::sinusoid<443>(frame_count + Pattern::num_leds - i)
 					    + ::sinusoid<449>(frame_count + Pattern::num_leds - i)) / 2
 					  + ::sinusoid<20071>(frame_count)),
-				255,
+				((((i/8) % 2) ^ (frame_count/8) % 2) == 0) ? 255 : 128 + 127 * ::sinusoid<2791>(frame_count),
 				128 + 127 * ( ( ::sinusoid<971>(frame_count + i)
 						      + ::sinusoid<1009>(frame_count + i)) /2
 				      * ( ::sinusoid<67>(frame_count + Pattern::num_leds - i)
