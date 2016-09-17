@@ -9,17 +9,17 @@
 #include <cmath>
 
 template <int period>
-double sinusoid(int i) {
+float sinusoid(int i) {
 	return sin(2 * M_PI * (i % period) / period);
 }
 
 void PrimeCycles::updateFrame(CHSV* frame) {
 	++frame_count;
-	double saturation_sin = ::sinusoid<2791>(frame_count);
-	double saturation = 255 - 210 * saturation_sin * saturation_sin;
-	double base_colour = ::sinusoid<20071>(frame_count);
+	float saturation_sin = ::sinusoid<2791>(frame_count);
+	float saturation = 255 - 210 * saturation_sin * saturation_sin;
+	float base_colour = ::sinusoid<20071>(frame_count);
 	for (int i = 0; i < Pattern::num_leds; ++i) {
-		double value_sin = (  ::sinusoid<587>(frame_count + i)
+		float value_sin = (  ::sinusoid<587>(frame_count + i)
 				            + ::sinusoid<593>(frame_count + i)) / 2
 				         * (  ::sinusoid<331>(frame_count + Pattern::num_leds - i)
 						    + ::sinusoid<349>(frame_count + Pattern::num_leds - i))
@@ -31,7 +31,7 @@ void PrimeCycles::updateFrame(CHSV* frame) {
 					    + ::sinusoid<449>(frame_count + Pattern::num_leds - i)) / 2
 						+ base_colour),
 				saturation,
-				255 * fabs (value_sin)
+				(128 + 127 * value_sin) / (1 + (255 - saturation) / 768)
 				);
 	}
 }

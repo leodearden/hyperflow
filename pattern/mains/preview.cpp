@@ -5,7 +5,7 @@
 #include "Pattern.h"
 #include "CImg.h"
 #include <cstdio>
-#include "../PrimeCycles.h"
+#include "PrimeCycles.h"
 
 using namespace cimg_library;
 
